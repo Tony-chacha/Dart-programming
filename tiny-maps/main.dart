@@ -29,6 +29,14 @@ class numbers {
   }
 }
 
+class ChachaContacts {
+  List Contacts = [0115011521, 0758626030];
+
+  Map<String, int> myContacts() {
+    return {"My main line": Contacts[0], "My second line": Contacts[1]};
+  }
+}
+
 void main() {
   print(temperatureStats());
   print(accountInfo());
@@ -36,8 +44,10 @@ void main() {
   print(perimeter(56, 76));
 
   numbers digits = numbers();
-
   var stats = digits.method();
-
   print(stats);
+
+  ChachaContacts call = ChachaContacts();
+  var mycall = call.myContacts();
+  print(mycall);
 }
