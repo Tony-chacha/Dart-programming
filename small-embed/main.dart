@@ -46,13 +46,53 @@ class AnthonyJob {
   }
 }
 
+class ClintonsVisit {
+  List<String> clintonVisit = [
+    "For that I grant him the loyalty of friendship.",
+    "I was happy that he decided to pay me a visit.",
+    "Clinton called me and told me he is coming to Nairobi.",
+  ];
+
+  String goodFriend(int index) {
+    if (index == 0) {
+      return clintonVisit[0];
+    }
+    return "${clintonVisit[index]} ${goodFriend(index - 1)}";
+  }
+}
+
+class FatherHood {
+  List<String> father = [
+    "For better or worse.",
+    "I pray to God Almighty to help me cherish my parents forever.",
+    "A father is a blessing to a child.",
+  ];
+
+  String fatherhood(int index) {
+    if (index == 0) {
+      return father[0];
+    }
+    return "${father[index]} ${fatherhood(index - 1)}";
+  }
+}
+
 void main() {
   SmallEmbed embedSmall = SmallEmbed();
   print("This is ${embedSmall.buildRhyme(2)}");
 
+  print("\nAbout Praise and Thanksgiving to God Almighty.");
   ChachasJob gratiasTibiDeus = ChachasJob();
   print("This is ${gratiasTibiDeus.newJob(2)}");
 
+  print("\nAbout the job that God is working on for me.");
   AnthonyJob wow = AnthonyJob();
   print("The ${wow.perfectJob(2)}");
+
+  print("\nAbout my Friend Clinton");
+  ClintonsVisit niceVisit = ClintonsVisit();
+  print(niceVisit.goodFriend(2));
+
+  print("\nAbout FatherHood");
+  FatherHood myFather = FatherHood();
+  print(myFather.fatherhood(2));
 }
