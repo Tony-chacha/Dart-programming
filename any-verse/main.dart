@@ -57,6 +57,43 @@ class RememberGod {
   }
 }
 
+class House {
+  List<String> house = [
+    "the house that Jack built.",
+    "the malt that lay in",
+    "the rat that ate",
+    "the cat that killed",
+    "the dog that worried ",
+    "the crumpled horn that tossed",
+    "the cow with",
+    "the maiden all forlorn that milked",
+    "the man all tattered and torn that kissed",
+    "the priest all shaven and shorn that married",
+  ];
+
+  String result(int index) {
+    if (index == 0) {
+      return house[0];
+    }
+    return "${house[index]} ${result(index - 1)}";
+  }
+
+  String recite(int index) {
+    return "This is ${result(index)}";
+  }
+
+  String verse(int startVerse, int endVerse) {
+    StringBuffer output = StringBuffer();
+
+    for (int i = startVerse; i <= endVerse; i++) {
+      output.writeln(recite(i));
+      if (i < endVerse) output.writeln();
+    }
+
+    return output.toString().trimRight();
+  }
+}
+
 void main() {
   AnyVerse thisVerse = AnyVerse();
   print(thisVerse.build(2));
@@ -77,4 +114,8 @@ void main() {
   for (int i = 0; i < love.remember.length; i++) {
     print(love.wrapRemember(i));
   }
+
+  print("\nAbout the house exercise on exercism");
+  House newHouse = House();
+  print(newHouse.verse(3, 5));
 }
