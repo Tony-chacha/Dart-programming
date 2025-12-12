@@ -109,15 +109,17 @@ class Chacha {
     return "${names[index]} ${jina(index - 1)}";
   }
 
-  String wrapJina(int index) {
+  String wrapJina(int verse) {
+    int index =
+        verse - 1; // basically here I want it to be 1-based. Not 0-based.
     return "This is ${jina(index)}";
   }
 
   String verseNames(int anza, int maliza) {
     StringBuffer kikapu = StringBuffer();
 
-    for (int i = 0; i < maliza; i++) {
-      kikapu.writeln(wrapJina(i));
+    for (int i = anza; i < maliza; i++) {
+      kikapu.write(wrapJina(i));
       if (i < maliza) kikapu.writeln();
     }
 
@@ -152,5 +154,5 @@ void main() {
 
   print("\nAbout Chacha");
   Chacha jawabu = Chacha();
-  print(jawabu.verseNames(0, 4));
+  print(jawabu.verseNames(1, 4));
 }
