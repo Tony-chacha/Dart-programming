@@ -37,6 +37,26 @@ class LoveofGod {
   }
 }
 
+class RememberGod {
+  List<String> remember = [
+    "the great wonders of the Lord.",
+    "the great love and",
+    "the wonderful mercies,",
+    "the graciousness,",
+  ];
+
+  String rememberGod(int index) {
+    if (index == 0) {
+      return remember[0];
+    }
+    return "${remember[index]} ${rememberGod(index - 1)}";
+  }
+
+  String wrapRemember(int index) {
+    return "Remember ${rememberGod(index)}";
+  }
+}
+
 void main() {
   AnyVerse thisVerse = AnyVerse();
   print(thisVerse.build(2));
@@ -50,5 +70,11 @@ void main() {
   print("\nThis is about the Love of God");
   for (int G = 0; G < good.loveGod.length; G++) {
     print(good.wrapLove(G));
+  }
+
+  print("\nAbout remembering God");
+  RememberGod love = RememberGod();
+  for (int i = 0; i < love.remember.length; i++) {
+    print(love.wrapRemember(i));
   }
 }
