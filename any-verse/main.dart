@@ -94,6 +94,37 @@ class House {
   }
 }
 
+class Chacha {
+  List<String> names = [
+    "Anthony Chacha who lives in that house.",
+    "the brother of",
+    "the genius friend of",
+    "the sister to",
+  ];
+
+  String jina(int index) {
+    if (index == 0) {
+      return names[0];
+    }
+    return "${names[index]} ${jina(index - 1)}";
+  }
+
+  String wrapJina(int index) {
+    return "This is ${jina(index)}";
+  }
+
+  String verseNames(int anza, int maliza) {
+    StringBuffer kikapu = StringBuffer();
+
+    for (int i = 0; i < maliza; i++) {
+      kikapu.writeln(wrapJina(i));
+      if (i < maliza) kikapu.writeln();
+    }
+
+    return kikapu.toString().trimRight();
+  }
+}
+
 void main() {
   AnyVerse thisVerse = AnyVerse();
   print(thisVerse.build(2));
@@ -118,4 +149,8 @@ void main() {
   print("\nAbout the house exercise on exercism");
   House newHouse = House();
   print(newHouse.verse(3, 5));
+
+  print("\nAbout Chacha");
+  Chacha jawabu = Chacha();
+  print(jawabu.verseNames(0, 4));
 }
